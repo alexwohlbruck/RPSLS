@@ -8,16 +8,16 @@ LIZARD = 'lizard'
 SPOCK = 'spock'
 CHOICES = [ROCK, PAPER, SCISSORS, LIZARD, SPOCK]
 COMBINATIONS = [
-  (SCISSORS, PAPER, 'cuts'),
-  (PAPER, ROCK, 'covers'),
-  (ROCK, LIZARD, 'crushes'),
-  (LIZARD, SPOCK, 'poisons'),
-  (SPOCK, SCISSORS, 'smashes'),
-  (ROCK, SCISSORS, 'crushes'),
-  (SCISSORS, LIZARD, 'decapitates'),
-  (LIZARD, PAPER, 'eats'),
-  (PAPER, SPOCK, 'disproves'),
-  (SPOCK, ROCK, 'vaporizes')
+  (SCISSORS, 'cuts', PAPER),
+  (PAPER, 'covers', ROCK),
+  (ROCK, 'crushes', LIZARD),
+  (LIZARD, 'poisons', SPOCK),
+  (SPOCK, 'smashes', SCISSORS),
+  (ROCK, 'crushes', SCISSORS),
+  (SCISSORS, 'decapitates', LIZARD),
+  (LIZARD, 'eats', PAPER),
+  (PAPER, 'disproves', SPOCK),
+  (SPOCK, 'vaporizes', ROCK)
 ]
 
 computer_score = 0
@@ -32,10 +32,10 @@ def determine_winner(choice1, choice2):
   
   for combo in COMBINATIONS:
     winner = combo[0]
-    loser = combo[1]
+    loser = combo[2]
     
     def print_result():
-      print(winner.capitalize() + ' ' + combo[2] + ' ' + loser)
+      print(winner.capitalize() + ' ' + combo[1] + ' ' + loser)
       
     if choice1 == winner and choice2 == loser:
       print_result()

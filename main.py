@@ -32,10 +32,11 @@ def determine_winner(choice1, choice2):
   
   for combo in COMBINATIONS:
     winner = combo[0]
+    verb = combo[1]
     loser = combo[2]
     
     def print_result():
-      print(winner.capitalize() + ' ' + combo[1] + ' ' + loser)
+      print(winner.capitalize() + ' ' + verb + ' ' + loser)
       
     if choice1 == winner and choice2 == loser:
       print_result()
@@ -44,10 +45,9 @@ def determine_winner(choice1, choice2):
     if choice2 == winner and choice1 == loser:
       print_result()
       return False
-  
 
 while user_score < WINNING_SCORE and computer_score < WINNING_SCORE:
-  
+  # Generate prompt string, eg. 'Rock, paper, scissors, lizard, or spock? '
   choices_english = CHOICES.copy()
   choices_english[-1] = 'or ' + choices_english[-1]
   prompt_string = ', '.join(choices_english)
